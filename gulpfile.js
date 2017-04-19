@@ -19,7 +19,7 @@ gulp.task('serve', function () {
       server: {
         baseDir: '_site/',
         routes: {
-          '/se-microsite-template': '_site/'
+          '/britishairwaysneworleans': '_site/'
         }
       }
     });
@@ -34,6 +34,8 @@ gulp.task('concatScripts', function(){
   return gulp.src([
     './js/modernizr-custom.js',
     './bower_components/jquery/dist/jquery.min.js',
+    './bower_components/FitText.js/jquery.fittext.js',
+    './bower_components/waypoints/lib/noframework.waypoints.min.js',
     './js/script.js'])
   .pipe(concat('scripts.js'))
   .pipe(uglify())

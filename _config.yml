@@ -1,8 +1,7 @@
 # Site settings
-title: se-microsite-template
-description: >
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi veniam voluptatibus totam accusantium laborum quo dolore.
-baseurl: "/se-microsite-template" # the subpath of your site, e.g. /blog/
+title: British Airways New Orleans
+description: Voodoo sounds echo across syncopated Second Lines, where a riot of colour skips across the Mardis Gras headdresses and the balconies and bright facades of the French Quarter’s townhouses. Southern hospitality abounds from down-to-earth eateries and eclectic dive-bars, where Creole flavours spice the gumbo, PoBoys and red beans and rice. High-society hotel-bars mix drinks of worldwide renown alongside jazz bars that spill out frantic melodies in a vivacious flurry of excitement – New Orleans is a hot, frenetic, but above all joyous concoction of vivacity, pride, and liberty.
+baseurl: "/britishairwaysneworleans" # the subpath of your site, e.g. /blog/
 url: "http://mp.secretescapes.com" # the base hostname & protocol for your site
 
 # Build settings

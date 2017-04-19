@@ -1,5 +1,6 @@
 // modal specific
 
+$icon-size: 3em;
 
 .modal {
   position: fixed;
@@ -14,36 +15,50 @@
   overflow: hidden;
   &.is-open { display: block;}
   &.is-closed { display: none; }
-  &__wrap {
+  &__ui-wrap {
     position: absolute;
     top: ($margin * 1.5);
-    left: ($margin / 2);
-    right: ($margin / 2);
+    left: 0;
+    right: 0;
     bottom: ($margin * 1.5);
+    width: 100%;
+    max-width: $xlarge;
+    margin-top: 0 !important;
+    cursor: auto;
+  }
+  &__content-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin-top: 0 !important;
+    max-width: $xlarge;
     cursor: auto;
     overflow-y: auto;
-    margin-top: 0 !important;
-    @include bp(large){
-      left: $margin;
-      right: $margin;
-    };
+    .flexbox & {
+      display: flex;
+      align-items: center;
+    }
   }
   &__content {
+    margin: auto;
+    color: $text-black;
     background-color: $white;
-    padding-top: ($margin / 2);
-    padding-bottom: ($margin / 2);
-    @include bp(large){
-      padding-top: $margin;
-      padding-bottom: $margin;
-    };
+    &--padding{
+      padding: $margin ($margin/1.5);
+      @include bp(large){
+        padding: ($margin*1.25) $margin;
+      }
+    }
   }
   &__close {
-    position: absolute;
+    position: fixed;
     right: 0;
     top: 0;
     height: 3em;
     width: 3em;
-    background-color: $se-dark-grey-85;
+    background-color: rgba($grey-darker, .5);
     background-image: url('../img/icons/close.png');
     background-position: center;
     background-repeat: no-repeat;
@@ -51,8 +66,48 @@
     cursor: pointer;
     z-index: $z-overlay-upper;
     @include transition;
-    .svg & {
-      background-image: url('../img/icons/close.svg');
+    .svg & { background-image: url('../img/icons/close.svg'); }
+    &:hover{ background-color: $grey-darker; }
+  }
+  &__nav {
+    position: absolute;
+    bottom: -$icon-size;
+    z-index: $z-overlay-upper;
+    height: $icon-size;
+    width: 50%;
+    margin-top: -($icon-size/2);
+    background-color: rgba($grey-darker, .5);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 1em;
+    cursor: pointer;
+    user-select: none;
+    @include transition;
+    &--next {
+      border-left: 1px solid rgba($white,.25);
+      right: 0;
+      background-image: url('../img/icons/arrow-right.png');
+      .svg & { background-image: url('../img/icons/arrow-right.svg'); }
+    }
+    &--previous {
+      left: 0;
+      background-image: url('../img/icons/arrow-left.png');
+      .svg & { background-image: url('../img/icons/arrow-left.svg'); }
+    }
+    &:hover{ background-color: $grey-darker; }
+  }
+  @include bp(small){
+    &__content-wrap {
+      margin-left: $icon-size;
+      margin-right: $icon-size;
+    }
+    &__nav{
+      top: 50%;
+      height: ($icon-size*2);
+      width: $icon-size;
+      &--next{
+        border-left: 0;
+      }
     }
   }
 }

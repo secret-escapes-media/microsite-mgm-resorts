@@ -1,31 +1,207 @@
 // all custom styles for the site
 
-
-body {
-  background-color: $se-light-grey;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-image: url('../img/bg/bg.jpg');
-  background-size: cover;
-  background-attachment: fixed;
+* {
+  // stop touch highlight color on mobile
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -moz-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-// ---------- Section styles ----------
+body { background-color: $black; }
 
-.invert-text { color: $white; }
-.bg {
-  &--white      { background-color: $white; }
-  &--black      { background-color: $black; }
-  &--light-grey { background-color: $light-grey; }
-  &--dark-grey  { background-color: $dark-grey; }
-  &--text-black     { background-color: $text-black; }
-  &--text-heading   { background-color: $text-heading; }
-  &--text-paragraph { background-color: $text-paragraph; }
-  &--se-orange     { background-color: $se-orange; }
-  &--se-light-grey { background-color: $se-light-grey; }
-  &--se-dark-grey  { background-color: $se-dark-grey; }
-  &--partner-primary   { background-color: $partner-primary; }
-  &--partner-secondary { background-color: $partner-secondary; }
+.banner {
+  position: relative;
+  height: 100%;
+  background-color: $grey-darker;
+  text-align: center;
+  background-image: url('../img/bg/intro.jpg');
+  @include background-attributes;
+  background-position: center bottom;
+  &__wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: $z-content;
+    width: 100%;
+    max-width: $xlarge;
+    margin: auto;
+    padding-top: 30vh;
+    .csstransforms.csstransforms3d & {
+      top: 50%;
+      padding-top: 0;
+      transform: translateY(-50%);
+    }
+  }
+  &__nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: $z-content;
+  }
+}
+
+.is-stuck {
+  position: fixed;
+  top: 0;
+  bottom: auto;
+  z-index: $z-nav-upper;
+}
+
+.section {
+  position: relative;
+  background-color: $grey-darker;
+  @include background-attributes;
+  &#flights {
+    padding-bottom: 30em;
+    padding-bottom: 27vw;
+    background-color: #052448;
+    background: url('../img/bg/flights-plane.png') center bottom / 100% auto no-repeat,
+                url('../img/bg/flights-gradient.jpg') center / cover no-repeat;
+  }
+  &:before {
+    // offset for the overlapping sticky header
+    content: '';
+    display: block;
+    height: ($site-nav-height/1.4);
+    @include bp(medium){
+      height: $site-nav-height;
+    }
+  }
+}
+
+.topic {
+  @include layout(12 1);
+  &__image { width: 100%; }
+  &__text,
+  &__image {
+    max-width: $large;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: ($margin*1.5);
+  }
+  &--center { text-align: center; }
+  @include bp(xxlarge){
+    &--center { text-align: left; }
+    &__text  { @include span(6); }
+    &__image { @include span(last 6); }
+    .flexbox & {
+      display: flex;
+      align-items: center;
+    }
+  }
+  #flights & {
+    max-width: $xxlarge;
+    margin-left: auto;
+    margin-right: auto;
+    @include bp(xxlarge){
+      &__text  { @include span(last 7); }
+      &__image { @include span(5); }
+      .flexbox & { flex-direction: row-reverse; }
+    }
+  }
+}
+
+.image-block {
+  line-height: 0;
+  &__image {
+    position: relative;
+    display: inline-block;
+    width: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: $grey-dark;
+    // keeps a 16:9 aspect ratio
+    &:before {
+      display: block;
+      content: "";
+      width: 100%;
+      padding-top: 56.25%;
+    }
+    &:first-child { width: 100%; }
+  }
+  &--16-9 &__image:before {
+    padding-top: 56.25%;
+  }
+}
+
+.pois {
+  max-width: $xxxlarge;
+  margin-top: $margin;
+  margin-left: auto;
+  margin-right: auto;
+  padding: $margin ($margin/1.75);
+  text-align: center;
+  border-radius: 3px;
+  background-color: rgba($black, .25);
+  box-shadow: inset 0px 0px 200px 0px rgba(255, 255, 255, 0.25);
+  @include bp(large){
+    padding-left: $margin;
+    padding-right: $margin;
+  }
+  &__list {
+    line-height: 1;
+    white-space: nowrap;
+    overflow-y: hidden;
+    overflow-x: auto;
+  }
+}
+
+.poi {
+  position: relative;
+  display: inline-block;
+  width: 200px;
+  opacity: .7;
+  transition: opacity $transition-time ease;
+  cursor: pointer;
+  &:before{
+    content: '';
+    position: absolute;
+    z-index: $z-content-upper;
+    right: 8px;
+    bottom: 8px;
+    display: block;
+    width: 25px;
+    height: 25px;
+    background-image: url('../img/icons/plus.png');
+    .svg & { background-image: url('../img/icons/plus.svg'); }
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+  &:hover{ opacity: 1; }
+  & + & { margin-left: 10px; }
+  @include bp(large){
+    & + & { margin-left: 20px; }
+  }
+}
+
+$cta-size: 53px;
+.mobile-cta {
+  position: fixed;
+  right: 1em;
+  bottom: 1em;
+  z-index: $z-overlay;
+  display: block;
+  height: $cta-size;
+  width: $cta-size;
+  background-color: $white;
+  background-image: url(../img/icons/british-airways.png);
+  .svg & { background-image: url(../img/icons/british-airways.svg); }
+  background-position: 45% 52%;
+  background-repeat: no-repeat;
+  background-size: 75% auto;
+  border-radius: $cta-size;
+  box-shadow: 0px 8px 44px 0px rgba(13, 13, 13, 0.15);
+  opacity: 0;
+  @include transition;
+  &.is-active{
+    opacity: 1;
+  }
+  @include bp(large){
+    display: none;
+  }
 }
 
 
@@ -34,17 +210,32 @@ body {
 .btn {
   @include transition;
   display:inline-block;
-  padding: .5em 1.5em;
-  border: 1px solid $se-orange;
-  font-weight: 500;
-  border-radius: 10em;
+  padding: 1.2em 3em;
+  font-weight: 700;
+  font-size: .694em;
+  text-transform: uppercase;
+  letter-spacing: .25em;
+  border-radius: 3px;
   &:hover {
     color: white;
     background-color: $se-orange;
     text-decoration: none;
   }
+  @include bp(large){
+    font-size: .867em;
+  }
   * + & { margin-top: 1em; }
 
+  &--outline  {
+    border: 1px solid rgba($white,.66);
+  }
+  &--dark     {
+    background-color: rgba(#232833,.4);
+    &:hover { background-color: rgba(#232833,.85); }
+  }
+  &--red {
+    background-color: #ce210f;
+    &:hover { background-color: #b51100; }
+  }
   &--solid { color: white; border: 0; background-color: $se-orange; }
-  &--large { font-size: 1.2em; padding: .5em 3em; }
 }

@@ -1,0 +1,20 @@
+<div class="js-modal modal is-closed">
+  <div class="modal__ui-wrap row">
+    <div class="js-close-modal modal__close"></div>
+    <div class="js-modal-nav modal__nav modal__nav--next" data-nav-direction="next"></div>
+    <div class="js-modal-nav modal__nav modal__nav--previous" data-nav-direction="previous"></div>
+    <div class="modal__content-wrap row">
+      {% for topic in page.topics %}
+      {% for poi in topic.pois %}
+      <div class="modal__content modal__content--{{poi.title | slugify}}" data-content-category="{{topic.id}}">
+        <div class="bg-image-ratio bg-image-ratio--3-2" style="background-image:url('{{site.baseurl}}/img/content/{{topic.id}}/pois/{% if poi.slug %}{{poi.slug}}{% else %}{{poi.title | slugify}}{% endif %}.jpg')">{% if poi.image-credit %}<span class="bg-image-ratio__credit js-image-credit">{{poi.image-credit}}</span>{% endif %}</div>
+        <div class="modal__content--padding">
+          <h2 class="title title--smaller title--light align-center">{{poi.title}}</h2>
+          <p>{{poi.description}}</p>
+        </div>
+      </div>
+      {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

@@ -5,7 +5,7 @@
 
 $core-font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
 $main-font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
-$title-font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+$title-font-family: 'Coustard', 'Helvetica Neue', sans-serif;
 
 html { font-size:62.5%; }
 body,
@@ -15,28 +15,33 @@ input, textarea, keygen, select, button {
   @include bp(medium) {
     font-size: 15px;
   }
-  color: $text-paragraph;
+  color: $white;
 }
 
 
 // -------- Headings --------
 
 .title {
-  font-family: $title-font-family;
-  letter-spacing: .025em;
+  font-weight: 200;
+  letter-spacing: .015em;
   line-height: 1.15;
-  + * { margin-top: .5em; }
+  + * { margin-top: 1em; }
 
+  &--special {
+    font-family: $title-font-family;
+    letter-spacing: .066em;
+    line-height: 1;
+  }
   &--spacing {
     * + & { margin-top: 15px; }
   }
   &--extra-margin { margin-top: 1.5em; }
-  &--sub-heading { margin-top: 0 !important; }
+  &--sub-heading  { margin-top: 0 !important; }
 
   &--light     { font-weight: 200; }
-  &--bold      { font-weight: 500; }
-  &--bolder    { font-weight: 600; }
-  &--expanded  { letter-spacing: .2em; }
+  &--bold      { font-weight: 700; }
+  &--expanded  { letter-spacing: .15em; }
+  &--expanded-extra  { letter-spacing: .35em; }
   &--condense  { letter-spacing: 0; }
   &--tight     { line-height: .9; }
   &--tighter   { line-height: .8; }
@@ -50,32 +55,37 @@ input, textarea, keygen, select, button {
       font-size: .55em;
     }
   }
-  &--larger      { font-size: 3.375em; }
-  &--large       { font-size: 2.986em; }
+  &--larger      { font-size: 2.986em; }
+  &--large       { font-size: 2.488em; }
   &--medium      { font-size: 2.25em; }
   &--small       { font-size: 2em; }
   &--smaller     { font-size: 1.867em; }
-  &--smallest    { font-size: 1.5em; }
-  &--tiny        { font-size: 1.44em; }
-  &--micro       { font-size: 1.2em; }
+  &--smallest    { font-size: 1.2em; }
+  &--tiny        { font-size: 1.1em; }
+  @include bp(large){
+    &--smallest    { font-size: 1.5em; }
+    &--tiny        { font-size: 1.44em; }
+    &--micro       { font-size: 1.2em; }
+  }
   @include bp(xxlarge){
-    &--largest     { font-size: 8em; }
-    &--larger      { font-size: 6em; }
-    &--large       { font-size: 4em; }
+    &--largest     { font-size: 7.2em; }
+    &--larger      { font-size: 3.533em; }
+    &--large       { font-size: 2.986em; }
     &--medium      { font-size: 2.933em; }
     &--small       { font-size: 2.467em; }
     &--smaller     { font-size: 2.25em; }
   }
 }
 
-.paragraph {
+.p {
   &--lead {
-    font-size: 1.25em;
-    line-height: 1.25;
+    font-size: 1.05em;
+    line-height: 1.6;
+    @include bp(large){ font-size: 1.25em; }
   }
   &--large { font-size: 1.05em; }
   @include bp(large){
-    &--lead { font-size: 1.467em; }
+    &--lead { font-size: 1.133em; }
     &--large { font-size: 1.2em; }
   }
 }
@@ -92,6 +102,13 @@ strong        { font-weight: 800; }
 .align-left   { text-align: left; }
 .align-right  { text-align: right; }
 .align-center { text-align: center; }
+
+.mobile-align-center {
+  text-align: center;
+  @include bp(large){
+    text-align: left;
+  }
+}
 
 hr {
   border: 0;

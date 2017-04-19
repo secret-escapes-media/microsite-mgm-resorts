@@ -2,7 +2,7 @@
 
 
 $core-nav-height: 70px;
-$site-nav-height: 45px;
+$site-nav-height: 70px;
 $site-header-height: ($core-nav-height + $site-nav-height);
 .site-header {
   position: absolute;
@@ -29,6 +29,10 @@ $site-header-height: ($core-nav-height + $site-nav-height);
   text-align: center;
   background-color: $black-75;
   * { vertical-align: middle; }
+  & > .row--padding {
+    padding-left: ( $margin / 1.25 );
+    padding-right: ( $margin / 1.25 );
+  }
   &__wrap {
     position: relative;
     display: table;
@@ -95,13 +99,7 @@ $site-header-height: ($core-nav-height + $site-nav-height);
   &__divider {
     display: none;
     height: ($core-nav-height / 1.5);
-    width: 0.5em;
-    margin-left: 0.5em;
-    border-left: 1px solid $white-25;
-    @include bp( medium ) {
-      width: 1em;
-      margin-left: 1em;
-    }
+    width: 1em;
     @include bp( xlarge ){
       display: inline-block;
     }
@@ -111,7 +109,6 @@ $site-header-height: ($core-nav-height + $site-nav-height);
     text-transform: uppercase;
     font-size: .833em;
     font-weight: 700;
-    color: $se-light-grey;
     @include bp( xlarge ){
       display: inline-block;
     }
@@ -138,16 +135,18 @@ $site-header-height: ($core-nav-height + $site-nav-height);
 // ---------- NAV FOR MICROSITE ----------
 
 $nav-arrow-width: 66px;
+
 .site-nav {
-  height: $site-nav-height;
+  height: ($site-nav-height/1.4);
   font-family: $core-font-family;
   text-align: center;
-  color: $white;
-  font-size: 13px;
-  line-height: 1.2;
-  letter-spacing: .066em;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: .225em;
+  line-height: (($site-nav-height/1.4)+1);
   text-transform: uppercase;
-  background-color: $se-dark-grey-66;
+  background-color: #232833;
+  background-color: rgba(#232833,.85);
   overflow: hidden;
   &__list {
     padding-right: $nav-arrow-width;
@@ -164,51 +163,43 @@ $nav-arrow-width: 66px;
       z-index: $z-nav-upper;
       display: block;
       width: $nav-arrow-width;
-      height: $site-nav-height;
+      height: ($site-nav-height/1.4);
       background-image: url("../img/icons/nav-arrow-dark.png");
       background-position: center;
       background-repeat: no-repeat;
       background-size: $nav-arrow-width auto;
     }
-    @include bp(xlarge){
+    @include bp(medium){
+      // remove the prompt for sideways scroll
       padding-right: 0;
       overflow: visible;
       &:before { display: none; }
     }
   }
   &__item {
-    height: $site-nav-height;
-    position: relative;
     display: inline-block;
     white-space: nowrap;
+    border-left: .5px solid rgba($white,.15);
     @include transition;
-    & + &:before {
-      // dividing lines between site nav items
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 0;
-      display: block;
-      height: ($site-nav-height / 1.33);
-      width: 1px;
-      background-color: $white-15;
-      transform: translateY(-50%);
-      @include transition;
+    &:last-of-type { border-right: .5px solid rgba($white,.15); }
+    &--flights { background-color: #0e1c3a; }
+    &:hover {
+      background-color: #0e121b;
+      border-color: #0e121b;
     }
-    &:hover,
-    &--current { color: $se-orange; }
-    &:hover { background-color: $black-25; }
+    // changes neighbour item border
+    &:hover + & { border-color: #0e121b; }
   }
   &__link {
     display: inline-block;
-    width: 100%;
-    padding: 15px 1.2em;
+    padding-left: 2em;
+    padding-right: 2em;
     &:hover,
     &--current { text-decoration: none; }
   }
-  @include bp(xlarge){
-    overflow: visible;
-    height: auto;
+  @include bp(medium){
+    height: $site-nav-height;
+    line-height: ($site-nav-height+1);
     .flexbox & {
       &__list {
         display: flex;
@@ -216,46 +207,9 @@ $nav-arrow-width: 66px;
         justify-content: space-around;
       }
       &__item { flex-grow: 1; }
-    }
-  }
-  // resets the nav for the footer to stop side scrolling
-  @media (max-width: $xlarge) {
-    &--footer {
-      height: auto;
-      background-color: $se-dark-grey-85;
-    }
-    &--footer & {
-      &__list{
-        padding-right: 0;
-        border-top: 1px solid $white-15;
-        white-space: normal;
-        &:before {
-          content: none;
-        }
-        .svg & {
-          display: flex;
-          flex-flow: row wrap;
-        }
-      }
-      &__item {
-        display: inline-block;
-        width: 33.33%;
-        border-bottom: 1px solid $white-15;
-        &:before { content: none; }
-        .svg & {
-          flex-grow: 1;
-        }
-        @media (max-width: $medium) {
-          width: 100%;
-        }
-      }
       &__link {
-        border: 0;
-        &:hover,
-        &--current {
-          padding-bottom: ($site-nav-height / 3);
-          border: 0;
-        }
+        padding: 0;
+        width: 100%;
       }
     }
   }
@@ -300,7 +254,6 @@ $mobile-nav-width: 75%;
       display: block;
       padding-top: .694em;
       padding-bottom: .694em;
-      color: $se-light-grey;
       font-size: 1em;
       font-weight: 700;
       text-transform: uppercase;
@@ -351,7 +304,7 @@ $mobile-nav-width: 75%;
   }
   p { margin-top: .5em; }
   .logo--secret-escapes { max-width: 110px; }
-  .logo--partner { max-width: 100px; }
+  .logo--partner { max-width: 125px; }
 }
 
 
@@ -386,11 +339,11 @@ $icon-size: 27px;
     max-width: 180px;
     padding-top: 4px;
     .footer__logos & {
-      padding-top: 0;
+      padding-top: 10px;
     }
   }
   &--partner {
-    max-width: 130px;
+    max-width: 150px;
     & + & {
       padding-left: 1em;
     }

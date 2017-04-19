@@ -1,1 +1,0 @@
-{% assign nav-order = site.pages | sort:"nav-order" %}{% for page in nav-order %}{% if page.nav-order %}<li class="{{include.block}}__item"><a class="{{include.block}}__link {{include.block}}__link--{{ page.title | slugify }}" href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></li>{% endif %}{% endfor %}

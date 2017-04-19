@@ -9,34 +9,39 @@ $susy:(
   global-box-sizing: border-box,
   gutters: 0,
 );
-$gutters:( gutters: 1 / 2, );
+$gutters:( gutters: 1, );
 $margin: 2em;
 
 
 // -------- grid sections --------
 
 section {
-  padding-top: 2.25em;
-  padding-bottom: 2.25em;
-  @include bp(large) {
-    padding-top: 3.375em;
-    padding-bottom: 3.375em;
+  min-height: 100%;
+  padding-top: 3.583em;
+  padding-bottom: 3.583em;
+  @include bp(large){
+    padding-top: 5.16em;
+    padding-bottom: 5.16em;
+  }
+  @include bp(xxlarge) {
+    padding-top: 7.234em;
+    padding-bottom: 7.234em;
   }
 }
 
 .row {
-  @include container( $xxlarge );
+  @include container( $xxxlarge );
   position: relative;
-  & + .row { margin-top: $margin; }
+  & + & { margin-top: $margin; }
+  & + &--extra-margin { margin-top: ($margin * 1.5); }
+  &--narrow {
+    @include container( $xxlarge );
+  }
 }
 
 .row--padding {
-  padding-left: ( $margin / 2 );
-  padding-right: ( $margin / 2 );
-  @include bp(medium) {
-    padding-left: $margin;
-    padding-right: $margin;
-  }
+  padding-left: $margin;
+  padding-right: $margin;
 }
 .row--margin {
   margin-left: ( $margin / 2 );
