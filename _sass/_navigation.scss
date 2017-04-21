@@ -65,7 +65,7 @@ $site-header-height: ($core-nav-height + $site-nav-height);
     @include bp(medium){
       &--center{ width: auto; }
     };
-    @include bp( large ){
+    @include bp( xxlarge ){
       &--right {
         right: 0;
         display: block;
@@ -79,7 +79,7 @@ $site-header-height: ($core-nav-height + $site-nav-height);
         }
       }
     }
-    @include bp( xlarge ){
+    @include bp( xxlarge ){
       &--left {
         display: none;
       }
@@ -100,7 +100,7 @@ $site-header-height: ($core-nav-height + $site-nav-height);
     display: none;
     height: ($core-nav-height / 1.5);
     width: 1em;
-    @include bp( xlarge ){
+    @include bp( xxlarge ){
       display: inline-block;
     }
   }
@@ -109,7 +109,7 @@ $site-header-height: ($core-nav-height + $site-nav-height);
     text-transform: uppercase;
     font-size: .833em;
     font-weight: 700;
-    @include bp( xlarge ){
+    @include bp( xxlarge ){
       display: inline-block;
     }
   }
@@ -273,16 +273,18 @@ $mobile-nav-width: 75%;
     background: $se-dark-grey-85;
     text-align: center;
      > * {
+       padding-top: .5em;
+       padding-bottom: .5em;
        vertical-align: middle;
      }
     @include bp-vertical {
       position: static;
     }
-    @include bp(large){
+    @include bp(xxlarge){
       display: none;
     }
   }
-  @include bp(xlarge){
+  @include bp(xxlarge){
     display: none;
   }
 }
@@ -305,6 +307,8 @@ $mobile-nav-width: 75%;
   p { margin-top: .5em; }
   .logo--secret-escapes { max-width: 110px; }
   .logo--partner { max-width: 125px; }
+  .logo--new-orleans { max-width: 100px; }
+  .logo--partner + .logo--partner { margin-left: .5em; }
 }
 
 
@@ -345,7 +349,8 @@ $icon-size: 27px;
   &--partner {
     max-width: 150px;
     & + & {
-      padding-left: 1em;
+      margin-left: 1.5em;
     }
   }
+  &--new-orleans { max-width: 130px; }
 }
