@@ -58,11 +58,12 @@ input, textarea, keygen, select, button {
   &--larger      { font-size: 2.986em; }
   &--large       { font-size: 2.488em; }
   &--medium      { font-size: 2.25em; }
-  &--small       { font-size: 2em; }
+  &--small       { font-size: 1.5em; }
   &--smaller     { font-size: 1.867em; }
   &--smallest    { font-size: 1.2em; }
   &--tiny        { font-size: 1.1em; }
   @include bp(large){
+    &--small       { font-size: 1.867em; }
     &--smallest    { font-size: 1.5em; }
     &--tiny        { font-size: 1.44em; }
     &--micro       { font-size: 1.2em; }
