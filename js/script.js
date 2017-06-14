@@ -232,7 +232,7 @@ $(window).scroll(function(){
 
   // shows mobile cta when past the start of food section
   var waypoint = new Waypoint({
-    element: document.getElementById('food'),
+    element: document.getElementById('dining'),
     handler: function() {
       $('.mobile-cta').toggleClass('is-active');
     },
@@ -241,7 +241,7 @@ $(window).scroll(function(){
 
   // hides mobile cta when in the flights section it links to
   var fucky = new Waypoint({
-    element: document.getElementById('flights'),
+    element: document.getElementById('offers'),
     handler: function() {
       $('.mobile-cta').toggleClass('is-active');
     },

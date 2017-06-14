@@ -1,7 +1,7 @@
 # Site settings
-title: British Airways New Orleans
-description: Voodoo sounds echo across syncopated Second Lines, where a riot of colour skips across the Mardis Gras headdresses and the balconies and bright facades of the French Quarter’s townhouses. Southern hospitality abounds from down-to-earth eateries and eclectic dive-bars, where Creole flavours spice the gumbo, PoBoys and red beans and rice. High-society hotel-bars mix drinks of worldwide renown alongside jazz bars that spill out frantic melodies in a vivacious flurry of excitement – New Orleans is a hot, frenetic, but above all joyous concoction of vivacity, pride, and liberty.
-baseurl: "/britishairwaysneworleans" # the subpath of your site, e.g. /blog/
+title: MGM Resorts
+description: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+baseurl: "/mgm-resorts" # the subpath of your site, e.g. /blog/
 url: "http://mp.secretescapes.com" # the base hostname & protocol for your site
 
 # Build settings

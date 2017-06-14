@@ -19,7 +19,7 @@ gulp.task('serve', function () {
       server: {
         baseDir: '_site/',
         routes: {
-          '/britishairwaysneworleans': '_site/'
+          '/mgm-resorts': '_site/'
         }
       }
     });
